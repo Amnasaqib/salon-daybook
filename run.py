@@ -110,7 +110,7 @@ def app_info():
      print("To search for specific appointments:")
      print("1 - Select option '(3)' in the menu to go to the search menu.")
      print("2 - Select between options to search for a name or a date.")
-      print("3 - Enter the name/date you wish to search for.")
+     print("3 - Enter the name/date you wish to search for.")
      print("4 - View the results of your search.\n")
 
      print("To cancel an appointment:")
@@ -147,4 +147,46 @@ def collect_details():
 
      else:
          confirm_appointment(appt_details)  
-          
+
+def get_date(reason):
+     """
+     Gets the date input from the user and validates that it is in the correct
+     format, and depending on the argument provided, is not a past date and,
+     is available for booking. Requests input until it is valid or returns
+     to menu if 'Exit' is input.
+     """
+     clear_tmnl()
+     print("Please enter an appointment date in the format of dd/mm/yyyy.")
+
+     while True:
+         date_input = input("\n").capitalize()
+         if date_input == "Exit":
+             main_menu()
+             break
+         else:
+             try: 
+                 date_fm = datetime.datetime.strptime(date_input,
+                                                      "%d/%m/%Y").date()
+
+             except ValueError:
+                 print("Invalid input, a date should:\n")
+                 print("- Be in the format of dd/mm/yyyy.")
+                 print("- Contain realistic values for day, month and year.\n")
+                 print("Please input a valid date.")       
+             else:
+                 if reason == "book":
+                     date_available = bool(get_avail_times(date_input))
+                     if date_available is False:  
+                         print(f"Sorry, {date_input} is unavailable.")
+                         print("Please enter a new date.")    
+                     else:     
+                         if CURRENT_DATE > date_fm:
+                             print("Invalid date input (past date).\n")
+                             print("Please enter a present or future date.")     
+                         else:       
+                             break   
+                 elif reason == "search":       
+                     break      
+         return date_input  
+
+                        

@@ -135,7 +135,7 @@ def collect_details():
      appt_detail = dict.fromkeys(appt_categories)
 
      appt_detail["Date"] = get_date("book")
-     appt_detail["Time"] = get_time(appt_detail["Date"])
+     appt_detail["Time"] = get_time(appt_detail["date"])
      appt_detail["Name"] = get_name("f_name")
      appt_detail["Surname"] = get_name("l_name")
 

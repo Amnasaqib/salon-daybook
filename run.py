@@ -615,6 +615,16 @@ def clear_tmnl():
      """
     os.system("clear")
 
+def main():
+     """
+     Runs necessary functions at the start of the program.
+     """
+     dlte_past_appts()
+     sort_sheet()
+     main_menu()
+
+
+main()
 
 
 

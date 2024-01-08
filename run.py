@@ -376,7 +376,7 @@ def book_again_prompt(status):
      elif re_book_ans == "2":
          main_menu()
 
- def search_name(reason):
+def search_name(reason):
      """
      Gets return values of get_name function for both name and surname
      and defines them in a single variable (search_name) as a list
@@ -444,3 +444,36 @@ def search_date(specification):
          date_recs.append(date_rec)
 
      display_records(date_recs, date_desc, dte_heads)
+
+
+
+     date_recs = []
+     for date_appt in date_appts:
+         date_rec = date_appt[1:4]
+         date_recs.append(date_rec)
+
+     display_records(date_recs, date_desc, dte_heads)
+
+def get_appts_for_date(data, required_return):
+     """
+     Gets the booked appointments for the date provided and returns
+     the requested data depending on the argument given for the
+     required_return parameter.
+     """
+     date_appts = APPTS.findall(data)
+
+     bookings = []
+     booked_times = []
+     for date_appt in date_appts:
+         booking = APPTS.row_values(date_appt.row)
+         booked_time = booking[1]
+         bookings.append(booking)
+         booked_times.append(booked_time)
+     if required_return == "bookings":
+         return bookings
+     elif required_return == "booked_times":
+         return booked_times
+
+         
+
+

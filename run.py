@@ -269,8 +269,8 @@ def get_name(name_part):
      print(f"Please enter the client's {name_prompt}.")
 
      while True:
-         cli_name = input("\n").capitalize()
-         if cli_name.isalpha() and len(cli_name) > 1:
+         pat_name = input("\n").capitalize()
+         if pat_name.isalpha() and len(pat_name) > 1:
              break
 
          else:
@@ -281,10 +281,10 @@ def get_name(name_part):
              print(f"Please enter a valid {name_prompt}.")
 
     
-     if cli_name == "Exit":
+     if pat_name == "Exit":
          main_menu()
      else:
-         return cli_name
+         return pat_name
 
 def check_existing_appts(details):
      """

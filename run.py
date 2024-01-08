@@ -304,5 +304,21 @@ def check_existing_appts(details):
                   existing_appt = True
 
      return existing_appt        
-     
-         
+
+def confirm_appointment(data):
+     """
+     Presents the user with the appointment details entered
+     and asks for final confirmation to make the booking
+     or cancel. Input is requested until a valid option
+     is input.
+     """
+     clear_tmnl()
+     appt_headers = ["Date", "Time", "Name", "Surname"]
+     print("Please confirm the following details before booking.\n")
+     print(tabulate([data], headers=appt_headers, tablefmt="fancy_grid"))
+     print("Enter Y to confirm or N to cancel.\n")
+     print("WARNING!")
+     print("Entering N will cancel the appointment and data will be lost.")
+
+     while True:     
+        

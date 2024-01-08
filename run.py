@@ -21,7 +21,7 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open("salon-daybook")
+SHEET = GSPREAD_CLIENT.open("salon_daybook")
 
 # Global variables for app processes.
 
@@ -38,7 +38,7 @@ def main_menu():
      to select in order to navigate the application.
      """
      clear_tmnl()
-     print("Salon's Daybook - Main menu\n")
+     print("Salon Daybook - Main menu\n")
      print("Please select an option below.\n")
 
      print("(1) Book new appointment.")
@@ -71,7 +71,7 @@ def search_menu():
      Displays options to search by date, by name, or return to the main menu.
      """
      clear_tmnl()
-     print("Salon's Daybook - Search Menu\n")
+     print("Salon Daybook - Search Menu\n")
      print("What would you like to do?\n")
 
      print("(1) Search appointments by name.")
@@ -146,7 +146,6 @@ def collect_details():
          print("A booking for this client already exists on this date.")
          print("You can only book one appointment per day per patient.\n")
          book_again_prompt("terminated")
-
      else:
          confirm_appointment(appt_details)  
 
@@ -447,14 +446,6 @@ def search_date(specification):
 
      display_records(date_recs, date_desc, dte_heads)
 
-
-
-     date_recs = []
-     for date_appt in date_appts:
-         date_rec = date_appt[1:4]
-         date_recs.append(date_rec)
-
-     display_records(date_recs, date_desc, dte_heads)
 
 def get_appts_for_date(data, required_return):
      """

@@ -320,5 +320,19 @@ def confirm_appointment(data):
      print("WARNING!")
      print("Entering N will cancel the appointment and data will be lost.")
 
-     while True:     
-        
+     while True:    
+         confirmation = input("\n").capitalize()
+         if confirmation not in ("Y", "N"):
+             print("Please input a valid option (Y/N).")
+         else:
+             break
+
+     if confirmation == ("Y"):
+         update_appts(data)
+         book_again_prompt("booked")
+     elif confirmation == ("N"):
+         clear_tmnl()
+          print("Booking terminated.\n")
+         book_again_prompt("terminated")
+ 
+

@@ -609,6 +609,12 @@ def sort_sheet():
      APPTS.sort((2, "asc"))
      APPTS.sort((1, "asc"))
 
+def clear_tmnl():
+     """
+     Clears the terminal when called.
+     """
+    os.system("clear")
+
 
 
 

@@ -200,7 +200,7 @@ def get_time(data):
      times = get_avail_times(data)
      if len(times) == 1:        
          print(f"The only available time on {data} is {times[0]}.\n")
-          print("Press 1 to continue with this time or 2 to enter a new date.")
+         print("Press 1 to continue with this time or 2 to enter a new date.")
          while True:        
              time_ans = input("")
              if time_ans not in ("1", "2"): 
@@ -284,3 +284,25 @@ def get_name(name_part):
          main_menu()
      else:
          return pat_name
+
+def check_existing_appts(details):
+     """
+     Checks the appointment records for the name and date provided
+     and if a booking already exists for the details, returns true,
+     otherwise, it returns false.
+     """
+
+     detail_date = details[0]
+     detail_name = details[2:4]
+     date_bookings = get_appts_for_date(detail_date, "bookings")
+
+
+     existing_appt = None
+     for booking in date_bookings:
+         for i in range(len(booking) - len(detail_name) + 1):
+             if detail_name == booking[i:i+len(detail_name)]:
+                  existing_appt = True
+
+     return existing_appt        
+     
+         

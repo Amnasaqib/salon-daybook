@@ -242,7 +242,7 @@ def get_avail_times(data):
                    "1200",
                    "1400",
                    "1500",
-                     "1600"
+                   "1600"
                    ]
  
      unav_times = get_appts_for_date(data, "booked_times")

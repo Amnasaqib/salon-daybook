@@ -167,7 +167,7 @@ def get_date(reason):
          else:
              try: 
                  date_fm = datetime.datetime.strptime(date_input,
-                                                      "%d/%m/%Y").date()
+                                                     "%d/%m/%Y").date()
 
              except ValueError:
                  print("Invalid input, a date should:\n")
@@ -266,11 +266,11 @@ def get_name(name_part):
      elif name_part == ("l_name"):
          name_prompt = "surname"
 
-     print(f"Please enter the patient's {name_prompt}.")
+     print(f"Please enter the client's {name_prompt}.")
 
      while True:
-         pat_name = input("\n").capitalize()
-         if pat_name.isalpha() and len(pat_name) > 1:
+         cli_name = input("\n").capitalize()
+         if cli_name.isalpha() and len(cli_name) > 1:
              break
 
          else:
@@ -281,10 +281,10 @@ def get_name(name_part):
              print(f"Please enter a valid {name_prompt}.")
 
     
-     if pat_name == "Exit":
+     if cli_name == "Exit":
          main_menu()
      else:
-         return pat_name
+         return cli_name
 
 def check_existing_appts(details):
      """
